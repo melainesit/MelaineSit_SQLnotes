@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     public void addData(View view) {
         Log.d("MyContactApp","MainActivity: Add contact button pressed");
 
-        boolean isInserted = myDb.insertData(editName.getText().toString());
+        boolean isInserted = myDb.insertData(editName.getText().toString(), editAddress.getText().toString(),editNumber.getText().toString());
 
         if(isInserted == true){
             Toast.makeText(MainActivity.this, "Success - contact inserted", Toast.LENGTH_LONG).show();
@@ -53,18 +53,23 @@ public class MainActivity extends AppCompatActivity {
         StringBuffer buffer = new StringBuffer();
         while (res.moveToNext()){
             //Append res colum
+            buffer.append(" Contact "+ res.getString(0) + ": " + "/n");
+            buffer.append(" Name: "+ res.getString(1)  + "/n");
+            buffer.append(" Address: "+ res.getString(2)+ "/n");
+            buffer.append(" Number: "+ res.getString(3));
         }
         Log.d("MyContactApp","MainActivity: viewData : assembled stringbuffer " + res.getCount());
         showMessage("Data", buffer.toString());
     }
 
-    private void showMessage(String error, String no_data_found_in_database) {
+    private void showMessage(String title, String message) {
         Log.d("MyContactApp","MainActivity: showMessage: building alert dialog");
 
         AlertDialog.Builder builder =  new AlertDialog.Builder( this);
         builder.setCancelable(true);
         builder.setTitle(title);
         builder.setMessage(message);
+        builder.show();
 
     }
 
