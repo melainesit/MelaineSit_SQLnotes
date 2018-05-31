@@ -1,5 +1,6 @@
 package com.example.sitm3033.mycontactapp2;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,18 +9,18 @@ import android.util.Log;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 3;
     public static final String DATABASE_NAME = "Contact2018.db";
     public static final String TABLE_NAME = "Contact2018_table";
     public static final String ID = "ID";
     public static final String COLUMN_NAME_CONTACT = "contact";
     public static final String COLUMN_ADDRESS_CONTACT = "address";
-    public static final String COLUMN_NUMBER_CONTACT = "number";
+    public static final String COLUMN_EMAIL_CONTACT = "email";
 
     public static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + TABLE_NAME + " (" +
-                    ID + " INTERGER PRIMARY KEY AUTOINCREMENT, " +
-                    COLUMN_NAME_CONTACT + " TEXT , " + COLUMN_ADDRESS_CONTACT + " TEXT, " + COLUMN_NUMBER_CONTACT +" NUMBER)";
+                    ID + " INTERGER PRIMARY KEY AUTOINCREMENT," +
+                    COLUMN_NAME_CONTACT + " TEXT," + COLUMN_ADDRESS_CONTACT + " TEXT," + COLUMN_EMAIL_CONTACT +" TEXT)";
 
     public static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS " + TABLE_NAME;
@@ -32,32 +33,36 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        Log.d("MyContactApp", "Databasehelper: creating Databasehelper");
+        Log.d("MyContactApp", "Databasehelper: created Databasehelper");
         db.execSQL(SQL_CREATE_ENTRIES);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         Log.d("MyContactApp", "Databasehelper: upgrading Databasehelper");
-        db.execSQL(SQL_CREATE_ENTRIES);
+        db.execSQL(SQL_DELETE_ENTRIES);
         onCreate(db);
     }
 
 
-    public boolean insertData(String name, String address, String number) {
-        Log.d("MyContactApp", "Databasehelper: inserting Databasehelper");
+    public boolean insertData(String name, String address, String email) {
+        Log.d("MyContactApp", "Databasehelper: inserting Data");
         SQLiteDatabase db = this.getWritableDatabase();
+        Log.d("MyContactApp", "Databasehelper: creating database");
+
         android.content.ContentValues contentValue = new android.content.ContentValues();
+        Log.d("MyContactApp", "Databasehelper: creating content value");
+
         contentValue.put(COLUMN_NAME_CONTACT, name);
         contentValue.put(COLUMN_ADDRESS_CONTACT, address);
-        contentValue.put(COLUMN_NUMBER_CONTACT, number);
+        contentValue.put(COLUMN_EMAIL_CONTACT, email);
         long result = db.insert(TABLE_NAME, null , contentValue);
         if (result == -1){
             Log.d("MyContactApp", "Databasehelper: Contact insert - FAILED");
             return false;
         }
         else{
-            Log.d("MyContactApp", "Databasehelper: Contact insert - FAILED");
+            Log.d("MyContactApp", "Databasehelper: Contact insert - SUCCEED");
             return true;
         }
     }

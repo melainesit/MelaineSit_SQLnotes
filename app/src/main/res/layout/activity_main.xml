@@ -19,7 +19,7 @@
 
     <EditText
         android:id="@+id/EditText_Name"
-        android:layout_width="wrap_content"
+        android:layout_width="156dp"
         android:layout_height="53dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="60dp"
@@ -28,78 +28,81 @@
         app:layout_constraintStart_toEndOf="@+id/textView_name"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="320dp"
-        android:onClick="addData"
-        android:text="ADD ADDRESS"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/textView_Address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="320dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginBottom="328dp"
+        android:layout_marginStart="44dp"
         android:text="Address"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="60dp"
-        android:text="ADD ADDRESS"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="320dp" />
-
     <EditText
         android:id="@+id/EditText_Address"
-        android:layout_width="wrap_content"
+        android:layout_width="162dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="156dp"
+        android:layout_marginTop="144dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView_Address"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/EditText_Number"
-        android:layout_width="wrap_content"
+        android:id="@+id/EditText_Email"
+        android:layout_width="148dp"
         android:layout_height="41dp"
         android:layout_marginBottom="232dp"
         android:layout_marginStart="20dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView_Number" />
+        app:layout_constraintStart_toEndOf="@+id/textView_Email" />
 
     <TextView
-        android:id="@+id/textView_Number"
+        android:id="@+id/textView_Email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Number"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="244dp"
+        android:text="Email"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-        tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="239dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
-        android:text="ADD NUMBER"
+        android:layout_marginBottom="68dp"
+        android:layout_marginStart="212dp"
+        android:onClick="addData"
+        android:text="ADD CONTACT"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="136dp" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="324dp"
+        android:onClick="SearchRecord"
+        android:text="Search"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_viewContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="68dp"
+        android:layout_marginStart="60dp"
+        android:onClick="viewData"
+        android:text="VIEW CONTACTS"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
