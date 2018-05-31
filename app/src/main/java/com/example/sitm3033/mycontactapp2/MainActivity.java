@@ -2,7 +2,6 @@ package com.example.sitm3033.mycontactapp2;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -81,15 +81,28 @@ public class MainActivity extends AppCompatActivity {
         builder.show();
 
     }
-    public static final String EXTRA_MESSAGE = "com.example.melainesit.mycontactapp p1.MEGGASE";
+    public static final String EXTRA_MESSAGE = "com.example.melainesit.mycontactapp.MEGGASE";
     public void SearchRecord(View view){
         Log.d("MyContactApp","MainActivity:launching SearchActivity");
-        android.content.Intent intent = new Intent(this, SearchActivity.class);
+        Intent intent = new Intent(this, SearchActivity.class);
+        Cursor res = myDb.getAllData();
+        StringBuffer buff = new StringBuffer();
+        String name = editName.getText().toString();
+        while (res.moveToNext()) {
+            String ID = res.getString(0);
+            String Names = res.getString(1);
+            String Numbers = res.getString(2);
+            String Emails = res.getString(3);
+            if (name.equals(Names)) {
+                buff.append(ID + "\n" + Names + "\n" + Numbers + "\n" + Emails + "\n" + "\n");
+            }
+        }
+        if (buff.length() == 0){
+            buff.append("Sorry, no results found");
+        }
+        String retur = buff.toString();
 
-
-
-
-        intent.putExtra(EXTRA_MESSAGE, editName.getText().toString());
+        intent.putExtra(EXTRA_MESSAGE, retur);
         startActivity(intent);
     }
 

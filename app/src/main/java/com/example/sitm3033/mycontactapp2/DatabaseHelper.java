@@ -1,6 +1,6 @@
 package com.example.sitm3033.mycontactapp2;
 
-import android.content.ContentValues;
+
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -13,13 +13,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "Contact2018.db";
     public static final String TABLE_NAME = "Contact2018_table";
     public static final String ID = "ID";
-    public static final String COLUMN_NAME_CONTACT = "contact";
-    public static final String COLUMN_ADDRESS_CONTACT = "address";
-    public static final String COLUMN_EMAIL_CONTACT = "email";
+    public final static String COLUMN_NAME_CONTACT = "contact";
+    public final static String COLUMN_ADDRESS_CONTACT = "address";
+    public final static String COLUMN_EMAIL_CONTACT = "email";
 
-    public static final String SQL_CREATE_ENTRIES =
+    public final static String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + TABLE_NAME + " (" +
-                    ID + " INTERGER PRIMARY KEY AUTOINCREMENT," +
+                    ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                     COLUMN_NAME_CONTACT + " TEXT," + COLUMN_ADDRESS_CONTACT + " TEXT," + COLUMN_EMAIL_CONTACT +" TEXT)";
 
     public static final String SQL_DELETE_ENTRIES =
