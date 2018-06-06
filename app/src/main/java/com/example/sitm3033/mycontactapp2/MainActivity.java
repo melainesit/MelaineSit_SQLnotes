@@ -2,6 +2,7 @@ package com.example.sitm3033.mycontactapp2;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.location.Address;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -81,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         builder.show();
 
     }
-    public static final String EXTRA_MESSAGE = "com.example.melainesit.mycontactapp.MEGGASE";
+    public static final String EXTRA_MESSAGE = "com.example.sitm3033.mycontactapp.MEGGASE";
     public void SearchRecord(View view){
         Log.d("MyContactApp","MainActivity:launching SearchActivity");
         Intent intent = new Intent(this, SearchActivity.class);
@@ -91,10 +92,10 @@ public class MainActivity extends AppCompatActivity {
         while (res.moveToNext()) {
             String ID = res.getString(0);
             String Names = res.getString(1);
-            String Numbers = res.getString(2);
-            String Emails = res.getString(3);
+            String Address = res.getString(2);
+            String Email = res.getString(3);
             if (name.equals(Names)) {
-                buff.append(ID + "\n" + Names + "\n" + Numbers + "\n" + Emails + "\n" + "\n");
+                buff.append(ID + "\n" + Names + "\n" + Address + "\n" + Email + "\n" + "\n");
             }
         }
         if (buff.length() == 0){
